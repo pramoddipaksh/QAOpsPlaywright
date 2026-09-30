@@ -52,7 +52,7 @@ test('@web Browser Playwright test with browser fixture', async ({ browser }) =>
     await userName.fill(""); // this will clear previously typed text value from editbox to empty
     await userName.fill("rahulshettyacademy");
     await signIn.click();
-    // SignIn button is clicked
+    // SignIn button is clicked - changes in pramod_fixes branch
 
     // from home page, get first item i.e. iphonex title and prints to console
    // console.log(await page.locator(".card-body a").textContent()); // (.classname<space>tagname=parent to child)
