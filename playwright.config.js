@@ -25,8 +25,8 @@ const config = ({   // config is a variable which hold all the config declared b
     actionTimeout: 10*1000,
     navigationTimeout: 30*1000, 
     browserName:'chromium',
-    headless : false,
-    screenshot: 'on',
+    headless : !!process.env.CI,
+    screenshot: 'only-on-failure',
     trace: 'on'  //'off'
     //trace: 'retain-on-failure',
   }
