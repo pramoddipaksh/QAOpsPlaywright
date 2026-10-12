@@ -13,6 +13,7 @@ const apiLoginPayload = {userEmail: "param@param.com", userPassword: "P@ssw0rd"}
 exports.customtest = base.test.extend({
     // first custom fixture
     authenticatedPage: async ({ page }, use) => {
+        const context = await browser.newContext();
         await page.goto('https://rahulshettyacademy.com/client'); // URL
         await page.locator('#userEmail').fill('param@param.com'); // username field
         await page.locator('#userPassword').fill('P@ssw0rd'); // password field
