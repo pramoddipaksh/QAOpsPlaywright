@@ -54,6 +54,7 @@ test(" Screenshot & Visual Comparison", async ({page})=>
 // Visual Testing = compare current screenshot with baseline screenshot and threshold = 20% difference allowed
 test(" Visual Testing", async ({page})=>
 {
+    test.skip(!!process.env.CI, 'Visual baseline is OS-specific; run locally');
     await page.goto("https://mail.google.com/");
     expect(await page.screenshot()).toMatchSnapshot('landing.png', { threshold: 0.2 }); // compare current screenshot with baseline screenshot and threshold = 20% difference allowed
 })
