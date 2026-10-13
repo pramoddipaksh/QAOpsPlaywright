@@ -15,7 +15,10 @@
     "webTests": "npx playwright test --grep @web --reporter=line,allure-playwright",
     "APITests": "npx playwright test --grep @API --reporter=line,allure-playwright",
     "SafariNewConfig": "npx playwright test --config=playwright.config1.js --project=safari",
-    "CucumberRegression": "npx cucumber-js --tags '@Regression' --retry 1 --exit --format html:cucumber-report.html"
+    "CucumberRegression": "npx cucumber-js --tags '@Regression' --retry 1 --exit --format html:cucumber-report.html",
+    "azureRegression": "npx playwright test --config=playwright.service.config.js --workers=5 --grep-invert @cart",
+    "azureWebTests": "npx playwright test --config=playwright.service.config.js --workers=5 --grep @web"
+  
   },
   "dependencies": {
     "@cucumber/cucumber": "^13.2.1",
