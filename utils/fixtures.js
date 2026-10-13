@@ -12,7 +12,9 @@ const apiLoginPayload = {userEmail: "param@param.com", userPassword: "P@ssw0rd"}
 // base = base is further extended using test.extend() method to create a new test object called customtest. This allows us to customize   
 exports.customtest = base.test.extend({
     // first custom fixture
-    authenticatedPage: async ({ page }, use) => {
+    authenticatedPage: async ({ browser  }, use) => {
+        const context = await browser.newContext();
+        const page = await context.newPage();
         await page.goto('https://rahulshettyacademy.com/client'); // URL
         await page.locator('#userEmail').fill('param@param.com'); // username field
         await page.locator('#userPassword').fill('P@ssw0rd'); // password field

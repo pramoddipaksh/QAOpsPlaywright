@@ -20,14 +20,13 @@ const config = ({   // config is a variable which hold all the config declared b
   reporter:'html',
 
   use:
-  {
-    
+  {    
     actionTimeout: 10*1000,
     navigationTimeout: 30*1000, 
     browserName:'chromium',
-    headless : false,
-    screenshot: 'on',
-    trace: 'on'  //'off'
+    headless : !!process.env.CI,
+    screenshot: 'only-on-failure',
+    trace: 'on-first-retry'  //'off'
     //trace: 'retain-on-failure',
   }
   

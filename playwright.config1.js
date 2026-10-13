@@ -28,7 +28,7 @@ const config = ({   // config is a variable which hold all the config declared b
         actionTimeout: 10 * 1000,
         navigationTimeout: 30 * 1000,
         browserName: 'webkit',
-        headless: false,
+        headless: !!process.env.CI,
         screenshot: 'on',
         trace: 'on',  //'off'
         ...devices['iPhone 11'],
@@ -42,7 +42,7 @@ const config = ({   // config is a variable which hold all the config declared b
         navigationTimeout: 30 * 1000, // maximum time for page navigation to complete
         browserName: 'chromium', // 'chromium' = Chrome browser, 'webkit' = Safari browser, 'firefox' = Firefox browser
         headless: false, // 'true' = it will run in background, 'false' = it will run in foreground
-        screenshot: 'on', // 'on' = it will capture screenshot for all test cases, 'off' = it will not capture screenshot for any test case, 'only-on-failure' = it will capture screenshot only when test case fails
+        screenshot: 'only-on-failure', // 'on' = it will capture screenshot for all test cases, 'off' = it will not capture screenshot for any test case, 'only-on-failure' = it will capture screenshot only when test case fails
         trace: 'on',  // 'off'
         //viewport: { width: 720, height: 720 }, // set viewport size for Chrome browser
         //trace: 'retain-on-failure', // 'retain-on-failure' = it will capture trace only when test case fails, 'on' = it will capture trace for all test cases

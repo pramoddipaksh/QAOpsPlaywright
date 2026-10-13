@@ -14,8 +14,8 @@ class CartPage {
     async verifyProductIsDisplayed(productName) 
     {
         //await this.page.waitForLoadState('networkidle'); //returns when the required load state has been reached
-
-        await this.getProductLocator(productName).waitFor({ state: 'visible' });
+        await this.page.locator('div li').first().waitFor();   // cart list rendered
+        await this.getProductLocator(productName).waitFor({ state: 'visible', timeout: 20000 });
     }
 
     async Checkout() 
