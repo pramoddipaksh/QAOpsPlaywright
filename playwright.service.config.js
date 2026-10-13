@@ -4,7 +4,8 @@ const { DefaultAzureCredential } = require('@azure/identity');
 const config = require('./playwright.config');
 
 /* Learn more about service configuration at https://aka.ms/pww/docs/config */
-export default defineConfig(
+// export default defineConfig( // earlier it was export default defineConfig( but now changed to module.exports = defineConfig( because of error "SyntaxError: Cannot use import statement outside a module" in Azure DevOps pipeline)
+module.exports = defineConfig(
   config,
   createAzurePlaywrightConfig(config, {
     exposeNetwork: '<loopback>',
@@ -23,7 +24,7 @@ export default defineConfig(
     */
      reporter: [
        ["html", { open: "never" }],
-       ["@azure/playwright/reporter"],
+       // ["@azure/playwright/reporter"],
      ],
   }
 );
