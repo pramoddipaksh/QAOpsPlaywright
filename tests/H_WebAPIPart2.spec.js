@@ -23,7 +23,7 @@ test.beforeAll(async ({browser})=>
 })
 
 
-test('Webst Client App Login', async() =>
+test('@cart Webst Client App Login', async() =>
 {
     const email = "";
     const productName = 'ZARA COAT 3';     
@@ -32,6 +32,7 @@ test('Webst Client App Login', async() =>
     //await page.waitForLoadState('networkidle'); 
     //await page.locator('.card-body b').first().waitFor(); //waiting atleast first cart to load; networkidle = flaky 
     const products = page.locator('.card-body'); //captured all products titles
+    await page.locator(".card-body b").first().waitFor();
     const allTitles = await page.locator('.card-body b').allTextContents(); //all products titles captured
     console.log("All products Titles: " +allTitles); //prints all products titles on console
 
@@ -139,6 +140,7 @@ test('@API Test case 2', async() =>
     await page.waitForLoadState('networkidle'); 
     //await page.locator('.card-body b').first().waitFor(); //waiting atleast first cart to load; networkidle = flaky 
     const products = page.locator('.card-body'); //captured all products titles
+    await page.locator(".card-body b").first().waitFor();
     const allTitles = await page.locator('.card-body b').allTextContents(); //all products titles captured
     console.log("All products Titles: " +allTitles); //prints all products titles on console
 })

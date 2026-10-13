@@ -1,6 +1,13 @@
 name: Playwright on Azure
 on:
   workflow_dispatch:
+    inputs:
+      workers:
+        description: 'Parallel workers'
+        default: '5'
+      grep:
+        description: 'Only run tests whose title matches (regex). Blank = all'
+        default: ''
 
 permissions:
   contents: read
@@ -25,7 +32,14 @@ jobs:
       - name: Run Playwright tests on Azure
         env:
           PLAYWRIGHT_SERVICE_URL: ${{ vars.PLAYWRIGHT_SERVICE_URL }}
-        run: npx playwright test --config=playwright.service.config.js --workers=10 --grep "@web|@API"
+          WORKERS: ${{ inputs.workers }}
+          GREP: ${{ inputs.grep }}
+        run: |
+          if [ -n "$GREP" ]; then
+            npx playwright test --config=playwright.service.config.js --workers="$WORKERS" --grep "$GREP" --grep-invert "@cart"
+          else
+            npx playwright test --config=playwright.service.config.js --workers="$WORKERS" --grep-invert "@cart"
+          fi
 
       - name: Upload report
         if: ${{ !cancelled() }}
