@@ -13,8 +13,8 @@ test('Webst Client App Login', async({page}) =>
     await page.locator('#userPassword').fill('P@ssw0rd'); // password field
     await page.locator("[value='Login']").click(); // login button
  // await page.waitForLoadState('networkidle'); //returns when the required load state has been reached
-    await page.locator('.card-body b').first().waitFor(); //waiting atleast first cart to load; networkidle = flaky
-
+    
+    await page.locator(".card-body b").first().waitFor(); //waiting atleast first cart to load; networkidle = flaky
     const allTitles = await page.locator('.card-body b').allTextContents(); //all products titles captured
     console.log("All products Titles: " +allTitles); //prints all products titles on console
 
