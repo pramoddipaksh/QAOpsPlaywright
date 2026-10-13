@@ -39,6 +39,7 @@ class DashboardPage {
     }
 
     async navigateToCart() {
+        await this.page.locator('.ngx-spinner-overlay').waitFor({ state: 'hidden' });
         await this.cart.click();
 
     }
